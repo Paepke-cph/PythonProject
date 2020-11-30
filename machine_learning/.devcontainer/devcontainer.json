@@ -1,0 +1,14 @@
+{
+  "name": "data_science",
+  "image": "jupyter/tensorflow-notebook:612aa5710bf9",
+  "extensions": [
+	"ms-python.python",
+	"grapecity.gc-excelviewer"
+],
+  "settings": {
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.dataScience.alwaysTrustNotebooks": true,
+    "python.pythonPath": "/opt/conda/bin/python",
+  },
+}
