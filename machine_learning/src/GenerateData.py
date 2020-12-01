@@ -26,5 +26,5 @@ if __name__ == "__main__":
     with open('cars.csv', 'w') as file:
         writer = csv.DictWriter(file, fieldnames = fields) 
         writer.writeheader()
-        for i in range(1,100):
+        for i in range(1,50):
             writer.writerow(makeCar())
