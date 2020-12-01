@@ -15,8 +15,11 @@ def makeCar():
     gearbox = random.choice([0,1])
     fueltype = random.choice([0,1])
     doornumber = random.choice([3,5])
-    price = newprice - ((year - 2000) * 5000)
-    price = price - ((km / 10000) * 5000)
+    price = newprice - ((year - 2000) * random.randint(2000,5000))
+    price = price - ((km / 10000) * random.randint(2000,5000))
+    price = price + (gearbox * random.randint(10000, 20000))
+    price = price + (kmperliter * random.randint(300, 400))
+    price = price + (len(make) * random.randint(1000,2000))
     car = {'make':make, 'year':year,'newprice':newprice,'kmperliter':kmperliter,'km':km,'horsepower':horsepower,'gearbox':gearbox, 'fueltype':fueltype,'doornumber':doornumber,'price':price}
     return car
 
