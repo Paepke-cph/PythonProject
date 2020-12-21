@@ -4,4 +4,4 @@
 	email = cph-bp133@cphbusiness.dk
 	name = Paepke
 [credential]
-	helper = "!f() { /home/jovyan/.vscode-server/bin/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/node /tmp/vscode-remote-containers-3dcf5034f4ac825e4d272bcc3a3e533de6234fc8.js $*; }; f"
+	helper = "!f() { /home/jovyan/.vscode-server/bin/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/node /tmp/vscode-remote-containers-5614ee255b41f1a0f5d95953faf7267eeda40b91.js $*; }; f"
