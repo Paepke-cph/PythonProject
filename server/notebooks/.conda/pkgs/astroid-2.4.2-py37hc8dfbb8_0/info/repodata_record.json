@@ -1,0 +1,30 @@
+{
+  "arch": "x86_64",
+  "build": "py37hc8dfbb8_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "constrains": [],
+  "depends": [
+    "lazy-object-proxy 1.4.*",
+    "python >=3.7,<3.8.0a0",
+    "python_abi 3.7.* *_cp37m",
+    "setuptools",
+    "six >=1.12,<2",
+    "typed-ast >=1.4.0,<1.5",
+    "wrapt 1.11.*"
+  ],
+  "features": "",
+  "fn": "astroid-2.4.2-py37hc8dfbb8_0.tar.bz2",
+  "license": "LGPL-2.1-only",
+  "license_family": "LGPL",
+  "md5": "5040c6b5b030b24e7920c4e11e1b3d97",
+  "name": "astroid",
+  "platform": "linux",
+  "sha256": "4868ceb03811f0215189259953b8e28a0a50dc1499d3e5b24a2551f1f5bb1824",
+  "size": 298208,
+  "subdir": "linux-64",
+  "timestamp": 1591645200610,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/astroid-2.4.2-py37hc8dfbb8_0.tar.bz2",
+  "version": "2.4.2"
+}

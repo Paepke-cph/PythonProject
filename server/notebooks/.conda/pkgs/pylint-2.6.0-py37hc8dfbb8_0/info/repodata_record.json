@@ -1,0 +1,29 @@
+{
+  "arch": "x86_64",
+  "build": "py37hc8dfbb8_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "constrains": [],
+  "depends": [
+    "astroid >=2.4.0,<=2.5",
+    "isort >=4.2.5,<6",
+    "mccabe >=0.6,<0.7",
+    "python >=3.7,<3.8.0a0",
+    "python_abi 3.7.* *_cp37m",
+    "toml >=0.7.1"
+  ],
+  "features": "",
+  "fn": "pylint-2.6.0-py37hc8dfbb8_0.tar.bz2",
+  "license": "GPL-2.0-only",
+  "license_family": "GPL",
+  "md5": "97224184e79a2073fad7f0eafb66ef2c",
+  "name": "pylint",
+  "platform": "linux",
+  "sha256": "ee618e98d6b9c4890686cf63b1d35861058682ca1558150ec722db9901dfbabb",
+  "size": 459162,
+  "subdir": "linux-64",
+  "timestamp": 1598117171113,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/pylint-2.6.0-py37hc8dfbb8_0.tar.bz2",
+  "version": "2.6.0"
+}
