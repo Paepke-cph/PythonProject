@@ -8,7 +8,7 @@ At indsamle data fra bilforhandlerside(r), udstille en webservice, og præsenter
 
 ## Teknologier :
 - Beautifulsoup
-- Mongodb eller MySQL
+- Mongodb
 - Pandas
 - Matplotlib
 - Numpy
