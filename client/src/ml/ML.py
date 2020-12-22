@@ -1,10 +1,10 @@
+import pandas as pd
 from Modules import Cleaner
 from Modules.Regression.LinearReg import LinearReg
 from Modules.Regression.DecisionTreeReg import DecisionTreeReg
 from Modules.Regression.MultiLinearReg import MultiLinearReg
 from Modules.Regression.PolynomialReg import PolynomialReg
 from Modules.Regression.RandomForestReg import RandomForestReg
-
 from Modules.Clustering.KMeansClustering import KMeansClustering
 from Modules.Clustering.KNNClustering import KNNClustering
 
@@ -13,7 +13,7 @@ class ML:
     def __init__(self, datafile="../data/bilhandel_unclean.csv"):
         self.test_car = [[0, 0, 0, 6, 85000, 2016, 120, 5,
                           6, 17.2, 9.9, 187.0, 1.198, 1.88, 290998.0]]
-
+        
         self.datafile = Cleaner.get_and_clean_df(datafile)
         self.linear_regression = LinearReg(self.datafile, make='Mazda')
         self.multi_linear_regression = MultiLinearReg(
@@ -26,6 +26,38 @@ class ML:
 
         self.kmeans_clustering = KMeansClustering(self.datafile, make='Mazda')
         self.knn_clustering = KNNClustering(self.datafile, make='Mazda')
+
+# 0        Score       Count      ML Model
+# Mazda    1          1000        Linear
+
+    def model_comparison(self):
+        makes = ['Mazda', 'VW', 'Mercedes', 'Ford', 'Audi']
+        df = pd.DataFrame(columns=['Make','Model', 'Score', 'Number of Cars'])
+        for m in makes:
+            # Linear Regression
+            linear_regression = LinearReg(self.datafile, make=m)
+            lin_score = linear_regression.score()
+            count = len(linear_regression.dataset.index)
+            
+            # Multilinear Regression
+            multilinear_regression = MultiLinearReg(self.datafile, make=m)
+            mul_score = multilinear_regression.score()
+
+            # Polynomial Regression
+            poly_regression = PolynomialReg(self.datafile, make=m)
+            poly_score = poly_regression.score()
+
+            appendDF = pd.DataFrame({'Make':m,
+                                    'Model':['Linear Regression', 'Multilinear Regression','Polynomial Regression'],
+                                    'Score':[lin_score, mul_score,poly_score],
+                                    'Number of Cars':[count,count,count]})
+            df = df.append(appendDF)
+
+        print(df.set_index('Make'))
+
+
+
+
 
     def run_linear_regression(self):
         print(self.linear_regression.predict_price_on_car(self.test_car))
@@ -63,10 +95,10 @@ class ML:
 
 if __name__ == "__main__":
     ml = ML()
-    # ml.run_linear_regression()
-    # ml.run_multilinear_regression()
-    # ml.run_polynomial_regression()
-    # ml.run_decisiontree_regression()
-    # ml.run_randomforest_regression()
-    # ml.run_kmeans_clustering()
-    ml.run_knn_clustering()
+    ml.model_comparison()
+
+
+
+
+
+
