@@ -1,2 +1,0 @@
-conda install folium -c conda-forge
-conda install python-graphviz

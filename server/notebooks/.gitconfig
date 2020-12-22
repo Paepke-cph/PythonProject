@@ -1,7 +1,0 @@
-[core]
-	editor = \"C:\\Users\\Benjamin Paepke\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe\" --wait
-[user]
-	email = cph-bp133@cphbusiness.dk
-	name = Paepke
-[credential]
-	helper = "!f() { /home/jovyan/.vscode-server/bin/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/node /tmp/vscode-remote-containers-5614ee255b41f1a0f5d95953faf7267eeda40b91.js $*; }; f"

@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  notebookserver:
+    build: ./server/
+    shm_size: "2gb" # increase /dev/shm shared memory from default 64mb to 2gb (for selenium and geckodriver)
+    ports:
+      - "5000:5000"
+    container_name: notebookserver
+  client:
+    image: "jupyter/tensorflow-notebook:612aa5710bf9"
+    volumes:
+      # Mounts the project folder to '/workspace'. While this file is in .devcontainer,
+      # mounts are relative to the first file in the list, which is a level up.
+      - .:/workspace:cached
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: /bin/sh -c "while sleep 1000; do :; done"
