@@ -9,7 +9,7 @@ from bson import ObjectId
 
 
 client = pymongo.MongoClient(
-    "mongodb+srv://python:exam123@cluster0.wabpp.mongodb.net/cars?retryWrites=true&w=majority")
+    "mongodb+srv://dublo:Anton1993!@cluster0.wabpp.mongodb.net/cars?retryWrites=true&w=majority")
 db = client.python_exam
 collection = db.cars
 
@@ -62,63 +62,93 @@ def read_model_from_db():
         result[index] = dict(row)
     return jsonify(result)
 
-
 @app.route('/api/manufactorcount', methods=['GET'])
 def return_manufactor_count():
     query = collection.aggregate([
-        {
-            "$match": {
-                "Make": {"$not": {"$size": 0}}
-            }
-        },
-        {"$unwind": "$Make"},
-        {
-            "$group": {
-                "_id": {"$toLower": "$Make"},
-                "count": {"$sum": 1}
-            }
-        },
-        {
-            "$match": {
-                "count": {"$gte": 2}
-            }
-        },
-        {"$sort": {"count": -1}},
-        {"$limit": 100}
+    {
+       "$match": {
+            "Make": { "$not": {"$size": 0} }
+        }
+    },
+    {"$unwind": "$Make" },
+    {
+        "$group": {
+           "_id": {"$toLower": "$Make"},
+           "count": { "$sum": 1 }
+        }
+    },
+    {
+       "$match": {
+           "count": {"$gte": 2 }
+        }
+    },
+    { "$sort" : { "count" : -1} },
+    { "$limit" : 100 }
     ])
     df = pd.DataFrame(list(query))
     result = to_json_response(df)
-    print(df)
     return result
-
 
 @app.route('/api/pricemiles', methods=['GET'])
 def return_price_miles():
-    query = collection.find(
-        {}, {"Kilometer": 1, "Pris": 1, "_id": 0, }).limit(500)
+    query = collection.find({}, { "Kilometer": 1, "Pris": 1, "_id": 0, }).limit(500)
     df = pd.DataFrame(list(query))
     result = to_json_response(df)
     return result
-
 
 @app.route('/api/pricemiles/make', methods=['GET'])
 def return_price_miles_from_make():
     manufactor = request.args.get('make')
     res = collection.find({'Make': re.compile(
-        manufactor, re.IGNORECASE)}, {"Kilometer": 1, "Pris": 1, "_id": 0, }).limit(500)
+        manufactor, re.IGNORECASE)}, { "Kilometer": 1,"Pris": 1, "_id": 0, }).limit(500)
+
 
     df = pd.DataFrame(list(res))
     result = to_json_response(df)
-    print(result)
+    return result
+
+@app.route('/api/fueltype', methods=['GET'])
+def return_fuel_types():
+    query = collection.aggregate([
+        {
+        "$match": {
+                "Brændstoftype": { "$not": {"$size": 0} }
+            }
+        },
+        {"$unwind": "$Brændstoftype" },
+        {
+            "$group": {
+            "_id": {"$toLower": "$Brændstoftype"},
+            "count": { "$sum": 1 }
+            }
+        },
+        {
+        "$match": {
+            "count": {"$gte": 2 }
+            }
+        },
+        { "$sort" : { "count" : -1} },
+        { "$limit" : 100 }
+        ])
+    df = pd.DataFrame(list(query))
+    result = to_json_response(df)
+    return result
+
+@app.route('/api/yearkilometer', methods=['GET'])
+def return_year_kilometer_from_make():
+    manufactor = request.args.get('make')
+    query = collection.find({'Make': re.compile(
+        manufactor, re.IGNORECASE)}, { "Kilometer": 1,"Årgang": 1, "_id": 0, })
+    df = pd.DataFrame(list(query))
+    result = to_json_response(df)
     return result
 
 
 @app.route('/api/dummy', methods=['GET'])
 def return_dummy_res():
-    print('hgey')
     return jsonify({'Msg': 'HelloWorld'})
 
-
 if __name__ == '__main__':
-    #app.run(debug=True)
-    app.run(host='0.0.0.0')
+    app.run(debug=True)
+
+

@@ -5,7 +5,7 @@ services:
     shm_size: "2gb" # increase /dev/shm shared memory from default 64mb to 2gb (for selenium and geckodriver)
     ports:
       - "5000:5000"
-    container_name: notebookserver
+    container_name: pythonExam
   client:
     image: "jupyter/tensorflow-notebook:612aa5710bf9"
     volumes:
