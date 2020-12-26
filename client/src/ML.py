@@ -18,7 +18,7 @@ class ML:
         self.linear_regression = LinearReg(self.datafile, make='Mazda')
         self.multi_linear_regression = MultiLinearReg(
             self.datafile, make="Mazda")
-        self.polynomial_regression = PolynomialReg(self.datafile, make="Mazda")
+        #self.polynomial_regression = PolynomialReg(self.datafile, make="Mazda")
         self.random_forest_regression = RandomForestReg(
             self.datafile, make="Mazda")
         self.decisiontree_regression = DecisionTreeReg(
