@@ -149,6 +149,6 @@ def return_dummy_res():
     return jsonify({'Msg': 'HelloWorld'})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0')
 
 
