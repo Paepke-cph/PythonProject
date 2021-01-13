@@ -5,13 +5,14 @@ from sklearn.compose import ColumnTransformer
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score
 
 
 # This class uses Linear Regression to see if there should be a coorelation between
 # 1. Kilometer Vs Price
 # 2. Year Vs Price
 class LinearReg:
-    def __init__(self, dataset, make="Mazda"):
+    def __init__(self, dataset, make):
         self.make = make
         self.dataset = dataset[dataset['Make'] == self.make]
         X = dataset.iloc[:, :-1].values
@@ -27,9 +28,10 @@ class LinearReg:
             X, y, test_size=0.2, random_state=0)
         self.regressor = LinearRegression()
         self.regressor.fit(self.X_train, self.y_train)
+        self.y_pred = self.regressor.predict(self.X_test)
 
     def score(self):
-        return self.regressor.score(self.X_test, self.y_test)
+        return r2_score(self.y_test, self.y_pred)
 
     def predict_price_on_car(self, car):
         return self.regressor.predict(car)

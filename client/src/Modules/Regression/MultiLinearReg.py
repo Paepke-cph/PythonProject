@@ -23,7 +23,7 @@ class MultiLinearReg:
         scaler = StandardScaler()
         scaler.fit_transform(self.X)
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
-            self.X, self.y, test_size=0.3, random_state=0)
+            self.X, self.y, test_size=0.2, random_state=0)
         self.regressor = LinearRegression()
         self.regressor.fit(self.X_train, self.y_train)
         self.y_pred = self.regressor.predict(self.X_test)

@@ -114,4 +114,5 @@ def clean_df(dataset):
     dataset = df_column_switch(dataset, 'Antal døre', 'Gearkasse')
     dataset = df_column_switch(dataset, 'Antal gear', 'Make')
     dataset = df_column_switch(dataset, '0 - 100 km/t', 'Model')
+    dataset = df_column_switch(dataset, 'Pris', 'Årgang')
     return dataset
