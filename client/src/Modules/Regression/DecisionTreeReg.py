@@ -24,9 +24,7 @@ class DecisionTreeReg:
         self.X[:, 1] = le.fit_transform(self.X[:, 1])
         self.X[:, 2] = le.fit_transform(self.X[:, 2])
         self.X[:, 3] = le.fit_transform(self.X[:, 3])
-        # Scale all values
-        scaler = StandardScaler()
-        scaler.fit_transform(self.X)
+
         # Train Test Split for
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
             self.X, self.y, test_size=0.25, random_state=0)

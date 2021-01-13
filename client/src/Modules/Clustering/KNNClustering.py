@@ -10,7 +10,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 
 # K-Nearest Neighbour clustering used for predicting fueltype
-
+# This is not clustering but classification
 
 class KNNClustering:
     def __init__(self, dataset, make):

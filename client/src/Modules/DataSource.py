@@ -2,7 +2,7 @@ import requests
 import pandas as pd
 import json
 
-import Cleaner
+from . import Cleaner
 def fetch(url, csv_file):
     try:
         re = requests.get(url)
