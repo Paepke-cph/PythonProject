@@ -31,7 +31,7 @@ class car_scraper():
         return self
 
     def get_detail_links(self, page_number):
-        random = randint(5, 10)
+        random = randint(5, 60)
 
         print(f'Getting detail links.. Waiting {random} seconds...')
         time.sleep(random)
@@ -86,7 +86,7 @@ class car_scraper():
         return res
 
     def download_car_details(self, car_url):
-        random = randint(5, 10)
+        random = randint(5, 60)
         time.sleep(random)
         headers = {'whoami': 'Vi beklager hvis vi er til besvær. Vi skal bruge data til eksamensprojekt i Python. Vi kan kontaktes på cph-mb346@cphbusiness.dk'}
         url = 'https://bilhandel.dk' + car_url
@@ -132,9 +132,9 @@ class car_scraper():
 
 if __name__ == '__main__':
     scraper = car_scraper(1, 'data/bilhandel_clean.csv')
-    # scraper.scrape(20)
-    df = pd.read_csv('data/bilhandel_unclean.csv')
-    df = df.applymap(str)
+    scraper.scrape(50)
+    df = pd.read_csv('data/bilhandel_clean.csv')
+    # df = df.applymap(str)
     df = scraper.clean_data(df)
-    scraper.save_to_csv(df)
+    # scraper.save_to_csv(df)
     scraper.save_to_db(df.to_dict('records'))
